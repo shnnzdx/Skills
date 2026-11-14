@@ -35,12 +35,16 @@ Use this skill to draft, critique, shorten, restructure, or translate a resume/C
 6. **Respect the user's format.** Preserve explicitly chosen project selection, bullet counts, ordering, language, and sections unless asked to rethink them.
 7. **Limit unnecessary commentary.** Deliver a polished, copy-ready revision first; explain only meaningful trade-offs or facts needing confirmation.
 
-## Compact copy-ready mode (when the user prefers short, polished sections)
-When the user approves a concise resume-section style, preserve that approved style in subsequent sections unless they change it. For Chinese resumes, the preferred compact pattern is a **company/project + actual role + location/date line, followed by four bullets**, each beginning with a short bold functional label and a colon. Keep the bullets substantive but tight: one core action, the relevant business or stakeholder context, and a defensible outcome. For a Skills section, use about four compact, functionally grouped lines instead of an exhaustive tool list.
+## Concise, copy-ready resume writing (all roles)
+This skill is a **general resume-writing skill**, not a template for any particular job family. First understand the candidate's actual background, source evidence, target audience (if specified), and writing preferences. Choose the strongest supported contributions, then express them in clear, compact language. Tailor the emphasis to a supplied job description only when requested; never overwrite the candidate's real experience to imitate that role.
 
-The four-bullet pattern is a **preference-sensitive default**, not a universal rule: a user's explicitly specified count, requested scope, or lack of four distinct supported facts takes precedence. Deliver the finished section immediately, with at most a brief caveat about a material uncertainty. Do not append a long analysis, assessment matrix, repeated rationale, or follow-up question when the request is simply to continue writing the next section.
+**Practical drafting workflow:** read evidence → identify personal ownership, problems, actions and verified results → select distinct highlights → draft → shorten repeated wording and excessive tool names → check numbers, dates and status → return a complete, copy-ready section. One bullet should communicate one core contribution. Prefer clear results, demonstrable capabilities or delivered artifacts over generic responsibilities; do not force metrics where none exist.
 
-For technical-to-commercial role changes, preserve technical credibility while highlighting supported requirements analysis, technical solution explanation, cost/performance trade-offs, internal stakeholder collaboration, and decision support. Internal stakeholders are **not** automatically external customers; research support is **not** a completed sale. Do not invent customer ownership, negotiations, conversion, bookings, revenue, or measurable cost savings.
+**Adaptive format:** A readable experience entry typically has organization/project, actual role, location or context, dates, and a small set of bullets. For Chinese entries, short **bold theme labels followed by a colon** can improve scannability; for English entries, strong action-led bullets may read better. Preserve the user's chosen style. Four bullets are appropriate when specifically requested or when a user approves that format, but they are **not mandatory across all resumes**. A short Skills section can group capabilities in a few compact functional lines. Do not add filler solely to satisfy a count.
+
+**Brevity and continuity:** Once the user approves a tone, length and presentation, carry them through the remaining sections. If the user asks for the next section or a short revision, deliver the polished text first with little or no explanation. Offer detailed critique, multiple options, a scoring rubric, a table or interview coaching only when specifically useful or requested.
+
+**Evidence gate:** Retain correct ownership, chronology, scope and the difference between researched, designed, recommended, tested, implemented and deployed. Internal collaboration is not automatically customer engagement; an investigation is not a fix; a projection is not realized savings. These are universal accuracy rules, not signals to prioritize any one profession.
 
 ## Recommended resume layout
 Use a clean, single-column, ATS-readable format by default. Adapt to the candidate and the user's requested structure.
@@ -168,38 +172,38 @@ Invent results; turn research into hands-on operations; upgrade proposals into d
 6. **尊重用户约束。** 项目取舍、条数、顺序、语言、章节已有明确要求时，不擅自修改。
 7. **先给可直接使用的成品。** 少做与请求无关的长篇解释，有事实冲突时简短标注。
 
-## 精简中文简历模式（用户已认可的默认风格）
-当用户明确认可某一版中文简历的**形式、长度、内容贴合度**，后续同一份简历的其他经历和技能栏应自动延续该风格，不重新切换成长篇分析。除非用户另有要求，优先直接交付**一块完整、可复制的简历正文**，正文外不额外讲“为什么这样写”。
+## 通用精简简历写作模式（适用于所有岗位）
+本技能专注于**写好简历**，不绑定技术、销售、咨询或任何特定职业。先理解候选人的真实经历、原始材料、目标岗位（如有）及用户偏好的表达风格；从实际贡献中筛选亮点，再用简洁、专业、可核实的文字表达。只有用户提出岗位或 JD 时才有针对性地调整重点，**不为了贴合 JD 而改写事实**。
 
-**单段工作／项目经历格式：**
+**实际写作流程：** 阅读经历及证据 → 区分个人贡献与团队成果 → 找到每段经历最有价值且不重复的贡献 → 按“背景/问题—行动—真实结果或交付”形成 Bullet → 删去冗余技术名词与套话 → 核对数字、日期和实施状态 → 直接交付可复制正文。这个流程是思考依据，最终句子应自然流畅，不必写成机械三段式。
+
+**推荐呈现方式（可根据用户要求调整）：**
 
 ```markdown
-### [公司或项目]｜[真实岗位或角色]
-*[地点／项目性质｜起止时间]*
+### [公司／项目名称]｜[真实职位／角色]
+*[地点或项目性质｜起止时间]*
 
-- **[能力主题一]：** [针对的业务/团队需求]，[本人关键动作]，[经核实的交付或价值]。
-- **[能力主题二]：** [具体分析、方案或协作]，[必要的技术/商业依据]，[实际成果]。
-- **[能力主题三]：** [方案设计或执行]，[验证范围/取舍]，[实际支持的业务判断]。
-- **[能力主题四]：** [其他不重复的贡献]，[可追问的结果或证据]。
+- **[能力主题]：** [核心行动]，[可验证的交付或结果]。
+- **[能力主题]：** [解决的问题和具体贡献]，[实际价值]。
+- **[能力主题]：** [与前面不同的贡献]，[可追问的证据]。
+- **[能力主题]：** [另一项真实亮点]，[具体结果]。
 ```
 
-**篇幅和形式：**
-- 用户要求四条时**严格四条**；用户已认可本风格但未重新指定条数时，工作经历、主要项目默认优选四条。有且只有三项可信独立贡献时，不为凑四条虚构第四项，保留三条或向用户明确说明缺口。用户另有数量要求时按用户要求。
-- 每条以 **2–6 字左右的加粗能力主题 + 全角冒号** 开头，例如“跨团队沟通”“成本与商业分析”“技术方案交付”“问题解决与协作”。主题根据岗位和真实经历选择，不机械复制。
-- 每条正文通常约 **50–100 个汉字**，一条一个贡献点，尽量一到两句，不堆叠过多工具、测试细节、数字或架构名；必要时为保留准确口径适度增减。
-- 保留公司/项目、真实岗位、地点与起止时间。日期存在冲突则简短标注“待核对”，不能自行选更好看的版本。
-- 技术能力栏默认 **四条紧凑分类**，如“技术方案与云计算／数据分析与商业研究／AI 与软件技术／沟通能力与专业认证”；实际类别应依据目标岗位和已有证据调整。不要展开成教程、能力清单或面试课。
-- 输出**正式简历文字，而不是建议清单**。优先沿用可编辑、可复制的正文呈现方式；界面支持独立文稿块时可把完整段落放在一个文稿块中。
-- **避免说明过量**：用户只说“下一段是 X”“技术能力”“缩短点”等，通常只给相应成稿；最多在正文外附一句必须提示的事实风险。不主动增加评估表、冗长战略建议、多套版本或结尾追问。
+**格式与篇幅：**
+- 四条 Bullet 是**用户要求四条、或已认可该样式时**的优先格式，不是所有经历必须凑四条。未给出条数时，根据经历重要性、证据和版面灵活采用约 2–5 条；证据不足不凑数，用户指定数量时尊重其要求。
+- 中文可以用 **简短加粗主题 + 全角冒号** 提高可读性；但不是所有岗位、语种或版式都必须使用。英文可用动作动词直接起句。
+- 每条围绕一项不同贡献，兼顾问题、本人行动、交付或价值；内容精炼但保留有辨识度的事实和必要数字。篇幅依用户喜好、经历复杂度和版面调整，不强制统一字数或行数。
+- 技能栏按相关能力分组，一般用 2–4 条简洁短句或短行即可；类别来自真实能力与目标用途，不固定为任何专业领域。
+- 公司／项目、角色、地点及日期按真实资料填写。信息不明或不同来源冲突时简短标注待核实，不填入猜测。
+- 尽量直接输出**一段完整、可复制的成稿**。用户只说“下一段”“缩短”“优化技术能力”等时，默认继续当前认可的风格，不附带大段分析、多版本、评分表或无关提问；如有关键事实风险，可附一句说明。
+- 用户要求评估、对照、深度解释、多风格候选稿、文件制作时，再提供对应内容，不以“精简”为由忽略明确请求。
 
-**按岗位转译，而非伪造岗位经历：**
-- 目标是技术销售、售前、解决方案或咨询时，优先从真实工程/研究经历中选择：需求理解、跨团队沟通、成本与方案对比、技术价值解释、决策支持、交付验证。
-- 采用“**需求/场景 → 本人行动/协作 → 可证明的方案或业务价值**”作为写作思路，必要的技术名词用来建立可信度，不要把段落写成 SRE 故障日志。
-- PM、工程团队、运营团队属于**内部需求方/协作方**，不能自动称为“客户”；内部评审或汇报不等于外部客户拜访、销售成交、设计导入或收入贡献。
-- 不凭目标 JD 反推本人有客户开发、商机管理、商务谈判、CRM、报价、订单或销售业绩。没有真实商业指标时，可以写“支持评估/预算规划/方案比较”，不可写“实现增收/促成合同/节省 XX%”。
-- 不把产品演示、研究简报、供应商资料整理写成真实客户销售成果；若角色主要是研究或内部支持，保持“参与、整理、支持、协作”等可核验动作。
-
-**示例约束：** 上面的括号均是结构占位符，禁止当作事实填入。优先选用用户已给出的真实数据与职责，避免对同一经历反复堆叠“促进、提升、优化”却没有明确交付。
+**岗位适配的通用原则：**
+- 不同岗位重视的能力各异；依据招聘信息和真实证据调整**亮点选择、关键词、排序与表达重点**，不要机械替换岗位名称或编造履历。
+- 可以展示技术能力、研究分析、执行交付、领导协作、运营管理、创意或客户沟通等任何有材料支持的贡献；不预设哪一种能力更重要。
+- 区分个人主导、参与、支持、研究、设计、验证、上线；将内部团队协作与外部客户交付区分开，将预测收益与真实成果区分开。
+- 减少“负责、熟悉、参与多个项目、显著提升”等空泛词；有强证据用具体行动和结果，缺少量化数据时如实写交付、验证或决策价值，绝不杜撰 KPI。
+- 上述示例是**格式占位符**，不能作为真实经历直接填充。用户明确采用其他格式时，以用户要求为准。
 
 ## 内容结构与篇幅
 默认采用简洁单栏、ATS 易解析的结构，视用户原稿调整顺序：
