@@ -1,51 +1,43 @@
-# Agent Skills — Evidence-First Workflows
+# Agent Skills — Personal Team Workflows
 
-A collection of reusable agent instructions for **GitHub engineering, Grok multi-agent delivery, resumes, and interviews**.
+Reusable skills for a small AI-assisted engineering team, plus evidence-first resumes and interviews.
 
-这不是只用于写简历的仓库。这里的 Skills 按任务拆分，原则是：**证据优先、适度自主、独立 QA、关键决策升级**。Skill 是工作指引，**不是 GitHub/AWS 执行权限**。
+**默认：少流程、重结果、证据真实。** Grok DD 负责日常研发与决策协调；不是每个 PR 都需要独立 QA、ChatGPT 复审或多级审批。只有有实际风险的工作才加审查强度。
 
-## Skills / 使用入口
+## Skills
 
-| Skill | Canonical entry | Use it for |
+| Skill | Entry | Purpose |
 | --- | --- | --- |
-| **GitHub Evidence Harness** | [`skills/github-evidence-harness/SKILL.md`](skills/github-evidence-harness/SKILL.md) | Exact SHA/diff/CI checks, bounded QA, L0–L3 risk review and G0–G5 permissions |
-| **Grok Multi-Agent Orchestration** | [`skills/grok-multi-agent-orchestration/SKILL.md`](skills/grok-multi-agent-orchestration/SKILL.md) | DD coordinates FE/BE/AI/Cloud/QA/Docs and Codex/Cursor; fewer repetitive ChatGPT reviews |
-| **Evidence-First Resume / 结果导向简历** | [`skills/evidence-first-resume/SKILL.md`](skills/evidence-first-resume/SKILL.md) | Role-agnostic, bilingual, evidence-backed, concise resume editing |
-| **Evidence-First Resume — English** | [`skills/evidence-first-resume/SKILL.en.md`](skills/evidence-first-resume/SKILL.en.md) | English-only resume guidance |
-| **S&B Interview / 情景与行为面试** | [`skills/evidence-first-sb-interview/SKILL.md`](skills/evidence-first-sb-interview/SKILL.md) | Behavioral STAR, situational decisions, independent evidence and bilingual interview practice |
+| **GitHub Evidence Harness — Lite** | [`skills/github-evidence-harness/SKILL.md`](skills/github-evidence-harness/SKILL.md) | Quick / Standard / Critical review, real GitHub evidence, simple action boundaries |
+| **Grok Multi-Agent Orchestration — Lite** | [`skills/grok-multi-agent-orchestration/SKILL.md`](skills/grok-multi-agent-orchestration/SKILL.md) | Grok DD, FE/BE/AI/Cloud, QA, Docs, Codex/Cursor with minimal ceremony |
+| **Evidence-First Resume / 结果导向简历** | [`skills/evidence-first-resume/SKILL.md`](skills/evidence-first-resume/SKILL.md) | Bilingual, role-agnostic, evidence-backed resume writing |
+| **Resume — English** | [`skills/evidence-first-resume/SKILL.en.md`](skills/evidence-first-resume/SKILL.en.md) | English guide |
+| **S&B Interview / 情景与行为面试** | [`skills/evidence-first-sb-interview/SKILL.md`](skills/evidence-first-sb-interview/SKILL.md) | Verified behavioral and situational interview preparation |
 
-Additional interview assets: [English-only guide](skills/evidence-first-sb-interview/SKILL.en.md), [story-bank template](skills/evidence-first-sb-interview/STORY_BANK_TEMPLATE.md), and [interview README](skills/evidence-first-sb-interview/README.md).
+[Interview English guide](skills/evidence-first-sb-interview/SKILL.en.md) · [Story bank template](skills/evidence-first-sb-interview/STORY_BANK_TEMPLATE.md) · [Interview README](skills/evidence-first-sb-interview/README.md)
 
-## How to use / 如何启动
+## Engineering — three levels / 个人项目的审查强度
 
-**Engineering:** Load GitHub Evidence Harness + Grok Multi-Agent Orchestration. Give Grok DD a repository, task goal, explicit limits, and any **already granted** operations. Grok verifies the exact GitHub state, delegates work and QA, then closes L0–L2 tasks itself within that authorization. ChatGPT reviews material L3 architecture/security issues, rather than every PR.
-
-**Resume:** Load the standalone Evidence-First Resume skill. Supply your source resume/projects, desired language, and constraints. It preserves ownership, metrics and implementation status; it does not fabricate impact or force a particular job family.
-
-**Interview:** Load the S&B Interview skill. Supply verified examples and the target question/role; do not treat a polished resume bullet as proof of a longer story.
-
-## Review tiers — 简化审查
-
-| Tier | Typical work | Review ownership |
+| Level | Typical work | Default workflow |
 | --- | --- | --- |
-| L0 | Docs/index/read-only | Grok DD |
-| L1 | Isolated low-risk code/tests | Grok DD + QA/CI |
-| L2 | Cross-component feature/integration | Grok DD + independent QA |
-| L3 | Authentication, privacy, cross-tenant access, data integrity, serious production risk | Human Owner + specialist QA; ChatGPT for material architecture/security review |
+| **Quick** | Docs, small CSS/copy, isolated safe tests | Worker checks diff and relevant test → Grok DD closes; **no mandatory QA** |
+| **Standard** | Feature, cross-file state/API integration | Worker → **one targeted independent QA** → Grok DD closes |
+| **Critical** | Auth, privacy, cross-tenant isolation, destructive data or risky production changes | Human Owner + targeted QA; **ChatGPT only for material critical architecture/security questions** |
 
-These tiers determine **who reviews**, not **who can click Merge**. G0–G5 gate external effects; no permission is created by this README. A repo-specific standing authorization can delegate routine actions after careful path/workflow review. A PR merge that triggers ECR publication requires authorization for the combined impact; ECS production deployment remains a separate owner decision.
+Only use the checks needed for this change. Report real evidence, not a stack of artifacts. Don't request repeated reviews for unchanged executable code after a docs-only branch sync.
 
-## Existing resume entry points / 旧链接兼容
+**Permissions are separate from review.** The Owner can grant a scoped standing delegation for routine GitHub changes, which removes repeated asks; this README does not itself grant it. A merge might auto-publish an image, so request approval for the combined effect **once** if not already delegated. Production/deletion/secrets require explicit Owner permission. Existing Cadensy restrictions remain until explicitly changed.
 
-- [`RESUME_SIMPLE.md`](RESUME_SIMPLE.md): retained bilingual legacy snapshot. Canonical updates now belong in `skills/evidence-first-resume/SKILL.md`.
-- [`RESUME_SIMPLEen.md`](RESUME_SIMPLEen.md): retained English legacy snapshot. Canonical updates now belong in `skills/evidence-first-resume/SKILL.en.md`.
+## How to use / 使用方法
 
-These root files are intentionally kept so older links continue to work. Avoid editing both copies independently; keep the canonical `skills/` versions as the maintained source. The previous README linked root `SKILL.md` / `SKILL.en.md` that did not exist; those links have been corrected.
+**Grok:** Load the GitHub Harness and Multi-Agent Skill. Provide repo, goal and any previously approved action scope. DD assigns only needed workers, uses the lowest appropriate review level, and gives a **four-to-five-line status**.
 
-## Safety and scope
+**Resume:** Load the bilingual Resume Skill with the candidate's evidence and requested language/length. Original standalone versions are unchanged. Older links [`RESUME_SIMPLE.md`](RESUME_SIMPLE.md) and [`RESUME_SIMPLEen.md`](RESUME_SIMPLEen.md) remain supported.
 
-- Read repository facts from GitHub at pinned SHAs; distinguish `STATIC-VERIFIED`, `EXECUTED-PASS`, `REPORTED`, `NOT RUN`, `UNKNOWN` and `OPEN`.
-- The engineering skills are reusable across repositories. Cadensy / DESIGN-04 is an example, **not** a global automatic merge policy or a retroactive change to existing G3/G4/G5 restrictions.
-- This public repo contains general instructions, not secrets, tokens, private resumes, personal story banks or production credentials.
+**Interviews:** Load the S&B Skill; keep fact, inference and hypothetical answers distinct.
 
-**Default:** the shortest honest evidence-backed report wins over long speculative architecture reviews.
+## Boundaries
+
+This public repo contains no secrets, tokens or personal resumes. These skills do not alter any GitHub protection rule, AWS setting, existing authorization, or historical acceptance result.
+
+**Default operating principle:** Quick work moves quickly. Important work gets relevant QA. Critical work gets deliberate judgment—not a bigger bureaucracy.
