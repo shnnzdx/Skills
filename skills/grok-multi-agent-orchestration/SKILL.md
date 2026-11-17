@@ -1,6 +1,6 @@
 ---
 name: grok-multi-agent-orchestration
-description: "Lean Grok-led personal engineering team. DD coordinates only the specialists needed; routine work is self-checked, important work gets targeted independent QA, and ChatGPT is reserved for consequential security or architecture questions."
+description: "Lean Grok-led personal team. DD coordinates engineering and business specialists as needed; routine work is self-checked, important work gets targeted QA, and ChatGPT is reserved for consequential security or architecture questions."
 ---
 
 # Grok Multi-Agent Orchestration — Personal Team Lite / 个人团队协作
@@ -13,6 +13,7 @@ Start with `../github-evidence-harness/SKILL.md`. This is an assignment and qual
 
 - **Human Owner:** product direction, meaningful trade-offs, standing delegation scope, expensive/production/destructive actions. Should not be interrupted for routine internal bookkeeping.
 - **Grok DD (orchestrator):** understand the goal, classify risk (Quick/Standard/Critical), choose workers, track actual authorization, make routine decisions, and give one short status update.
+- **Business (market & product strategy):** research customer value, competitors, differentiation, growth and business viability when DD or the Owner needs commercial input. Advises; does not approve product direction or engineering work.
 - **Frontend / Backend / AI Agent / Cloud:** implement or research **only when relevant**. A UI issue doesn't need the Cloud worker unless a release effect matters.
 - **QA:** independently challenge risky integration and core regressions. **Not mandatory for every README edit or simple helper.**
 - **Docs:** update useful source-of-truth pages when needed, not after every code change.
@@ -20,6 +21,19 @@ Start with `../github-evidence-harness/SKILL.md`. This is an assignment and qual
 - **ChatGPT:** independent second opinion only for **material new security/architecture decisions, contested evidence, or explicit Owner request**. Not every PR's gatekeeper.
 
 Grok DD owns coordination. Avoid parallel writes to the same file; one implementer plus a reviewer when it matters.
+
+### Business Worker / 商业与产品战略
+
+Business is a **commercial decision-support specialist**, not a replacement for the Human Owner, Grok DD, or an engineering Product Manager. Invoke it for product discovery, positioning, feature prioritization, go-to-market or monetization questions; do not include it in every engineering PR.
+
+- **Competitors:** check current, relevant products (e.g., Wanderlog, Wonderplan, Mindtrip, Layla, Pilot, when applicable) for actual features, user journeys, positioning and pricing. Use dated sources/links; do not treat an old competitor snapshot as current or assume similar names are the same product.
+- **Customers and differentiation:** identify user personas and real or hypothesized pain points; test why users would choose the product over existing tools or chat groups. For Cadensy, investigate group travel coordination, decision-making and the value of "AI proposes, rules protect, humans decide" **as a hypothesis, not a proven moat**.
+- **Value and viability:** evaluate onboarding, adoption, retention, conversion, distribution, realistic monetization and AI/service cost. Propose measurable signals, not invented market size or customer evidence.
+- **Prioritization:** give **up to three** concrete opportunities per review, each with customer problem, evidence/uncertainty, expected value, implementation effort, a lightweight validation experiment and a success metric. Favor focused changes over a speculative feature backlog.
+- **Evidence:** inspect the product's current code/docs or observed behavior before claiming a feature exists or is missing. Distinguish VERIFIED facts, sourced competitor claims, REPORTED observations and untested hypotheses; never fabricate user interviews, usage statistics or prices.
+- **Handoff and authority:** send concise findings to Grok DD. DD may scope an investigation or propose an authorized implementation; **major positioning, business model, spending or product-direction decisions go to the Human Owner**. Business cannot merge code, grant permissions, or deploy.
+
+For business-only research, a short evidence-backed recommendation is the deliverable; no forced engineering QA or ChatGPT approval. If a recommendation becomes a code change, follow the existing Quick / Standard / Critical paths based on actual impact, without adding a separate Business approval gate.
 
 ## 2. Three-track delivery / 三条路径，不逐轮拉评审
 
