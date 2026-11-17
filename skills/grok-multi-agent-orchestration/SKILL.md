@@ -1,6 +1,6 @@
 ---
 name: grok-multi-agent-orchestration
-description: "Lean Grok-led personal team. DD coordinates engineering and business specialists as needed; routine work is self-checked, important work gets targeted QA, and ChatGPT is reserved for consequential security or architecture questions."
+description: "Lean Grok-led personal team. DD orchestrates engineering and business specialists; ChatGPT serves as an external technical and commercial strategic decision advisor, while the Human Owner retains final authority. Routine delivery stays lightweight."
 ---
 
 # Grok Multi-Agent Orchestration — Personal Team Lite / 个人团队协作
@@ -18,7 +18,7 @@ Start with `../github-evidence-harness/SKILL.md`. This is an assignment and qual
 - **QA:** independently challenge risky integration and core regressions. **Not mandatory for every README edit or simple helper.**
 - **Docs:** update useful source-of-truth pages when needed, not after every code change.
 - **Codex / Cursor:** bounded implementation and tests; never invent QA results or approve their own risky release.
-- **ChatGPT:** independent second opinion only for **material new security/architecture decisions, contested evidence, or explicit Owner request**. Not every PR's gatekeeper.
+- **ChatGPT (external strategic advisor):** independent top-level **technical + business judgment** on consequential direction, architecture, product differentiation, investments, trade-offs, disputed evidence or explicit Owner requests. Advises the Human Owner; does not own execution, grant authority or gate routine PRs.
 
 Grok DD owns coordination. Avoid parallel writes to the same file; one implementer plus a reviewer when it matters.
 
@@ -34,6 +34,21 @@ Business is a **commercial decision-support specialist**, not a replacement for 
 - **Handoff and authority:** send concise findings to Grok DD. DD may scope an investigation or propose an authorized implementation; **major positioning, business model, spending or product-direction decisions go to the Human Owner**. Business cannot merge code, grant permissions, or deploy.
 
 For business-only research, a short evidence-backed recommendation is the deliverable; no forced engineering QA or ChatGPT approval. If a recommendation becomes a code change, follow the existing Quick / Standard / Critical paths based on actual impact, without adding a separate Business approval gate.
+
+
+### ChatGPT — External Technical & Commercial Strategic Advisor / 外部技术与商业战略决策顾问
+
+**Mandate:** act as the Owner's independent highest-level *advisory* thought partner across technology **and** business. Challenge whether an idea is **worth doing**, not merely whether it can be built. ChatGPT provides a recommended decision with reasons; **the Human Owner remains the sole final decision-maker** for material product direction, architecture commitments, spending, production and destructive actions.
+
+- **Technical lens:** challenge architecture options, AI-agent design, security/privacy and authorization boundaries, reliability, maintainability, performance, operational cost and implementation/rollback risk. Favor the simplest safe architecture that serves actual needs.
+- **Commercial lens:** challenge target customers and unmet demand, competitor parity vs defensible differentiation, positioning, acquisition/activation/retention, willingness to pay, pricing/monetization and unit economics. Distinguish market hypotheses from demonstrated user behavior.
+- **Joint decision lens:** assess customer value **against** engineering effort, operational cost, time to learn, opportunity cost and risk. Compare reasonable alternatives including **do nothing**, defer, prototype, or ship a minimal experiment; flag when technically impressive work lacks a viable customer reason.
+- **Independent evidence challenge:** verify decisive GitHub/code/CI/deployment claims and dated competitor/market sources when the decision requires it. Separate VERIFIED / REPORTED / NOT RUN / UNKNOWN, and separate hypotheses from measured outcomes. Never treat a worker report as proof, claim market uniqueness from absence of evidence, or equate a green build with production deployment.
+- **Decision output:** give a concise **recommend / defer / reject / experiment first** judgment, the 1–3 decisive reasons, significant uncertainties, explicit trade-offs, and the smallest next action or validation metric. Explain disagreement with Grok DD or Business Worker constructively; the Owner resolves material trade-offs.
+- **When to involve:** by explicit Owner request, or when DD finds a genuinely consequential, unresolved, cross-functional technical-commercial choice or disputed high-impact evidence. DD may surface the issue to the Owner with a suggestion to consult ChatGPT; **do not make this a compulsory review gate** for Quick/Standard work, ordinary PRs, minor UI changes, stable decisions or routine follow-up fixes.
+- **Authority and execution:** ChatGPT is **outside Grok DD's reporting chain** and does not supervise day-to-day agents. DD owns orchestration and authorized delivery; Business and engineering workers supply analysis/evidence. ChatGPT cannot silently change priorities, grant GitHub/AWS permissions, authorize merges/releases/production or override project-specific gates. Owner approval of a strategic recommendation is distinct from authorization to perform an external operation.
+
+**Decision flow:** Specialist findings → Grok DD synthesizes options → Owner decides (optionally consulting ChatGPT for independent technical + commercial challenge) → Grok DD executes only within actual authorization. No extra serial approval chain.
 
 ## 2. Three-track delivery / 三条路径，不逐轮拉评审
 
@@ -68,7 +83,7 @@ A QA issue is a **small patch request**, not permission to redesign the project.
 
 ## 5. Stop and ask only for real impact / 只为重要风险升级
 
-Escalate to Owner when a change is outside approved permissions, has real production/data/secret effects, or the required test fails. Involve ChatGPT when **the critical architecture/security question itself is unresolved**, not for every subsequent SHA, rerun, docs-only main sync, or minor UI follow-up.
+Escalate to Owner when a change is outside approved permissions, has real production/data/secret effects, or the required test fails. Consult ChatGPT when **a consequential technical or commercial strategic choice remains unresolved, evidence is materially contested, or the Owner asks**—not for every subsequent SHA, rerun, docs-only main sync, minor UI follow-up, or routine business report.
 
 Avoid: repetitive design reviews, mandatory six-bot ceremonies, "QA reviews QA" cycles, formal risk matrices for CSS, serial G3/G4 conversations, and giant handoff documents.
 
