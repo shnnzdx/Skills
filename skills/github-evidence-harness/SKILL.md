@@ -1,116 +1,126 @@
 ---
 name: github-evidence-harness
-description: "Evidence-first GitHub execution and review harness for multi-agent engineering. Verify exact SHAs, file diffs, CI jobs and logs; separate reported from executed evidence; grade risk; delegate routine work to Grok/QA and escalate only critical architecture or security changes to ChatGPT and the human owner."
+description: "Lightweight, evidence-first GitHub workflow for a personal Grok-led engineering team. Reduce approval and review overhead: self-check routine changes, use independent QA for meaningful integration risks, and escalate only high-impact security, data or production decisions."
 ---
 
-# GitHub Evidence Harness / GitHub 证据与分级审查
+# GitHub Evidence Harness — Personal Team Lite / 个人团队轻量版
 
-## Purpose / 目标
+**Use for:** GitHub development, PR review, CI evidence and release decisions in a small owner-led AI team.
 
-Use this skill whenever an agent inspects, implements, reviews, merges, or reports on GitHub repository work. This is an **evidence and decision protocol**, not permission to execute. It cannot guarantee zero hallucinations; it makes unsupported assertions visible and prevents them from being treated as verified.
+**Goal:** Move quickly without inventing evidence. **Do not copy big-company approval procedures into everyday personal-project work.** A short, verified result is better than repeated 20-page reviews.
 
-核心目标：**少开会、少重复审查；保留不可妥协的证据、权限与安全边界。** 普通工程任务由 Grok/DD + 独立 QA 完成；ChatGPT 只介入最高风险、实质性争议或 Owner 明确指定的独立架构审查。
+This skill is **guidance, not GitHub/AWS authorization**. It does not grant a bot any action permission or change pre-existing project restrictions.
 
-## 1. Non-negotiable invariants / 不可妥协
+## 1. Default: choose the lightest review / 默认用最轻的流程
 
-1. **Pin first.** Before reviewing or acting, read repository, base branch SHA, PR head SHA and worktree HEAD (where applicable). A branch name is not a version. Report exact SHA.
-2. **Read real artifacts.** Use file contents at the pinned SHA, full diff/file list, actual workflow definitions, job metadata, and job logs when the claim needs logs. A PR description, agent report, or green badge alone is not executable evidence.
-3. **Label every claim:** `STATIC-VERIFIED` (inspected source or Git metadata), `EXECUTED-PASS` / `EXECUTED-FAIL` (observed run and scope), `REPORTED` (someone else's unverified claim), `NOT RUN`, `UNKNOWN`, `OPEN`. Never upgrade a label by paraphrasing.
-4. **Separate types of acceptance:** design accepted ≠ code implemented ≠ tests executed ≠ PR merged ≠ artifact published ≠ production deployed. Separate `CURRENT`, `PROPOSED`, `OWNER-APPROVED`, `DEFERRED`, `OPEN`.
-5. **Negative evidence has a boundary.** "No defect found in scanned files" is not "no defect exists." A static test is not React/browser E2E. A local unit test is not the new HTTP/DB contract test.
-6. **Scope and permissions are distinct.** Read-only inspection does not authorize implementation; writing a branch does not authorize push, merge, publication or production changes. This document itself grants no authorization.
-7. **Never report a successful operation before its tool returns success.** Check actual post-action state when possible. Never invent URLs, commit IDs, job names, logs, exact counts, test results, or approvals.
-8. **Keep secrets out.** Do not copy credentials, raw user tokens, private data, proprietary incident logs, or sensitive identifiers into PRs, public repositories or agent handoffs.
-
-## 2. Minimal evidence path / 快速证据链
-
-For a normal PR, use the *shortest sufficient* sequence:
-
-1. **Identity:** repo/full name; current base SHA and head SHA; PR state; whether head contains base (merge-base / ahead-behind). Re-check after head or base changes.
-2. **Scope:** list every changed path; examine real diff against target base. Compare to allowlist and known behavior. "Docs-only" requires path/content and workflow-trigger verification, not filename guesswork.
-3. **Safety:** inspect relevant source and existing tests at exact head. Search for auth, state, boundary, rollback or observable behavior affected by changed lines; do not extrapolate to unrelated modules.
-4. **Tests:** read the relevant workflow definition, run/check metadata, correct event (push vs pull_request), steps and logs. Check named tests, counts, failures, skips and whether new tests are actually collected by CI.
-5. **Independent QA:** QA inspects pinned head without editing implementation; maintain an explicit list of NOT RUN cases and bounded claims.
-6. **Decision:** `PASS`, `CONDITIONAL PASS` or `NO-GO` with **one actionable reason** per blocker; assign a risk level and who may approve. No automatic serial referrals to ChatGPT.
-
-If a connector returns 403 or missing log content, label `CI transcript UNKNOWN`. A green job can be verified at metadata level, **not** as proof of test case names. Another authorized reviewer can fetch the missing log and record that reader as the source. Do not invent a workaround or request secrets.
-
-A new head after edits, rebase or merge is **a new review target**. Reuse prior QA only if changed code/test blobs are verified identical and new checks pass; explicitly state inherited evidence and its boundaries.
-
-## 3. Review risk tiers / 分级审查，而非每次找 ChatGPT
-
-Risk is based on **effect and uncertainty**, not changed-line count.
-
-| Tier | Typical examples | Default reviewer | ChatGPT? |
+| Level | Typical changes | Review / completion | ChatGPT |
 | --- | --- | --- | --- |
-| **L0 — Trivial** | Safe docs/index wording, links, comments, non-executing formatting | Grok/DD alone, optional Docs check | No |
-| **L1 — Routine** | Isolated tests, bounded UI copy, local helper/refactor with unchanged contract | Grok/DD + quick independent QA or CI | No |
-| **L2 — Significant** | Multi-file feature, cross-component state, non-sensitive API behavior, integration regression | Grok/DD + independent QA, targeted evidence | Usually no; only on dispute/escalation |
-| **L3 — Critical** | Auth/session/tenant or trip isolation, permissions, privacy/secrets, persistent-data integrity/migration, irreversible deletion, production deployment or high-impact rollback, uncontained release, unresolved material security finding | Human Owner + independent QA; ChatGPT for architecture/security challenge | Yes for material architecture/security decision; Owner always owns execution approval |
+| **Quick / 日常** | README, links, docs, small CSS/copy changes, isolated low-risk unit tests, simple refactors without contract changes | Implementer checks diff and relevant test; Grok DD accepts. **No mandatory separate QA or formal design document.** | No |
+| **Standard / 重要** | Cross-file UI/state changes, bounded new features, API behavior not affecting authentication, multi-module integrations | Worker implements → independent QA verifies **affected behavior and key regressions once** → DD decides. | No by default |
+| **Critical / 高风险** | Authentication/permissions, cross-trip/tenant isolation, privacy/secrets, destructive migrations, irreversible data changes, serious security findings, production deployment or expensive cloud changes | Owner decides risk and release; targeted independent QA and rollback evidence. ChatGPT can challenge **material new** architecture/security decisions. | Only for material critical issues or owner request |
 
-**Escalate one tier** for a serious evidence gap affecting correctness, divergent reviewer conclusions, missing rollback, unknown downstream effects, scope creep across trust boundaries, or unreviewed CI/workflow changes. A tiny one-line authorization bug can be L3; a lengthy documentation refactor can be L0.
+**Risk is about consequences**, not number of lines or number of PR commits. Grok DD can reclassify work when new evidence changes the risk. A trivial docs-only sync does not become Critical just because its branch has an old Critical review history.
 
-**ChatGPT trigger (critical only):** L3 design/authorization boundary, cross-tenant information exposure risk, irreversible production decision, or QA/engineering unable to resolve a material contradiction. If a critical decision has already been explicitly accepted and the new change is byte-identical docs-only, do not reflexively demand another ChatGPT review. Grok must record the reason when escalating.
+### Do not confuse three separate questions
 
-**Human Owner remains final authority.** ChatGPT provides independent analysis, not credentials, a deployment token, or a substitute for owner consent.
+1. **Is the change correct?** Appropriate review/tests for its risk level.
+2. **Is the change authorized?** Use the permission scope the Owner already granted.
+3. **What happens after merge?** A merge may automatically publish ECR/package artifacts even if no ECS deployment occurs.
 
-## 4. Action gates / 风险等级不等于操作授权
+Don't turn these three questions into three repeated conversations. Put any needed approval in **one concise Owner request**, including automatic downstream effects.
 
-Use the smallest practical permissions for the target repository. Maintain a repo-specific, owner-approved standing delegation policy if the Owner wants Grok to handle routine work without repeated prompts.
+## 2. Evidence without paperwork / 不制造形式主义
 
-- **G0 — Read:** inspect repository, issues, PRs and public/authorized logs. Default autonomous.
-- **G1 — Local change:** edit/build/test in a bounded, approved worktree. No cloud/production implied.
-- **G2 — Publish branch/PR:** push commits, create/update PR and request QA. Not a merge.
-- **G3 — Merge to main:** GitHub merge; requires an explicit per-PR owner decision **or** an existing, clearly scoped standing delegation (L0–L2 only).
-- **G4 — Downstream artifact publication:** any automatic ECR/package/image release triggered by G3. Analyze actual workflows *before* G3. If G3 automatically causes G4, treat them as **one combined impact for approval**, not two repetitive conversations; never grant G4 implicitly.
-- **G5 — Production operation:** ECS deploy, environment/flag changes, data migration, secrets, irreversible production action. Owner approval required; do not infer from G3/G4.
+For Quick tasks, the minimum is:
 
-Historical project-specific gates remain effective until the Human Owner explicitly replaces them. **Publishing this skill does not retroactively authorize any blocked PR, G3/G4/G5, database run, cloud action, or previously OPEN product decision.**
+- Name the changed files and describe what changed.
+- Actually inspect the diff and run the relevant check **if one exists**. State `NOT RUN` when no test was run; don't invent coverage.
+- Make a short final report. No mandatory QA bot, multi-agent meeting, SHA matrix, acceptance spreadsheet, archival bundle, or new design revision.
 
-For routine L0–L2 work, the Owner may define a standing policy such as: "Grok can G1/G2, independently QA and merge approved path classes once all named checks pass, provided the workflow has no production side effects." Without that policy, stop at the last explicitly authorized action. Do not claim an unstated standing grant.
+For Standard tasks:
 
-## 5. Cheap review workflow / 轻量闭环
+- At PR/release review, check the **actual PR head** and changed files; run targeted tests and required CI checks.
+- Use an **independent QA worker once** to check the risky behavior and main negative case. Small unrelated edits do not restart full QA.
+- If a new test was meant to run in CI, confirm that the CI command collects it; a green badge alone isn't proof.
+- If tests fail, fix the specific defect, rerun the relevant tests and close. Don't create cascading "rev5.1 / rev5.2 / rev5.3" approval cycles.
 
-**Intake (DD):** one task, clear goal, target base/head, allowed paths, expected behavior, risk tier, authorized gates. Skip lengthy architecture packets for L0/L1.
+For Critical tasks:
 
-**Implement (Worker/Codex):** smallest change; preserve unrelated code; tests appropriate to risk. Own work is `IMPLEMENTER-REPORTED` until independently checked.
+- Pin exact base/head SHAs; inspect auth/data boundary and real code, test the material negative cases, assess rollback, state missing E2E or production evidence.
+- Involve ChatGPT **once per genuinely new disputed architectural/security decision** when needed; don't force it to reapprove code that was proven unchanged.
+- A new head from docs-only main sync does **not** require a new critical architecture review if executable blobs are unchanged; record that fact and relevant CI.
 
-**Verify (QA):** test exact head and critical negative cases; confirm changed-file allowlist and CI collection; summarize PASS/FAIL, executed vs NOT RUN, and blockers. QA must not quietly patch the same implementation it independently reviews.
+### Four honest labels suffice
 
-**Decide (DD):** if L0–L2 and evidence complete, close using delegated permissions; if a clear defect exists, request **one targeted correction** and one recheck. No endless "Rev5.1/5.2/5.3" cycle unless a real new finding requires it. After two failed targeted iterations, disagreement, or scope/risk escalation, ask the Owner to route to ChatGPT.
+**VERIFIED:** personally read source/diff/log or ran the check.  
+**REPORTED:** another agent's claim not independently reproduced.  
+**NOT RUN:** test or operation was not executed.  
+**UNKNOWN:** missing/inaccessible evidence.
 
-**Finish:** exact head/base, code/test evidence, PR state, artifact state, remaining known risk, next authorized action. Ordinary result should be 5–10 lines, not a 20-page report.
+Use exact commit SHAs on a PR or release summary; there's no need to print SHAs in every design chat or small status ping. For published test counts, use a run log or reproducible local result, not guesswork. If CI logs are 403, write `UNKNOWN` for the transcript; don't repeatedly block routine work when verified local checks and the Owner's policy allow proceeding. If exact CI test-name proof is an acceptance criterion for that task, obtain it or explicitly note that criterion remains unmet.
 
-## 6. Critical STOP rules / 必须中止的条件
+**Never equate:** code written with merged; CI green with all tests executed; ECR built with ECS deployed; static grep with browser E2E; proposal with implemented production behavior.
 
-STOP before writing or merging when: permissions are missing; head drift is unexamined; protected-path scope expands; CI relevant checks fail; a required new test is absent from actual CI collection; copied secrets/PII appear; authorization/tenant checks can be bypassed; a new DB migration or cloud side effect appears; rollback is not credible; a material question is still OPEN; branch protection/review rules would be bypassed; or the supposed independent QA is only the implementer's self-report.
+## 3. Permissions: simple in daily conversation / 日常不逐项报 G0–G5
 
-A skip is not a pass. A PR push-run that skips code jobs can still be green; identify the actual pull_request run with code checks. A docs-only main push can still trigger builds if filters are broad: inspect filters and called workflows before claiming "no ECR."
+The **Owner may grant standing delegation** for a named repository and path/workflow class. Under such a grant, Grok DD can handle routine planning, local edits, tests, branches, PRs and permitted merges **without asking again for every file, SHA or small PR**. Verify the scope before acting.
 
-## 7. Case study: Cadensy DESIGN-04 / 真实经验提炼
+Without a grant, do not assume permission to push, merge or change infrastructure merely because this skill says "Quick". A skill is never its own authorization.
 
-Historical pattern, **not current authorization**:
+Use three practical boundaries in everyday reports:
 
-- Account missing `X-Trip-Id` and Header/Path conflict needed explicit semantics; documentation acceptance did not prove Phase 3 runtime behavior.
-- Invite creation had `Route Trip A` versus `Session/Header Trip B`; green CI initially omitted the new failing test. The fix required fresh organizer membership evidence, correctly matched Path/Header, and independent negative tests.
-- A later UI-only issue displayed cached Trip B while the POST correctly targeted A: code safety and UX consistency were separate criteria.
-- A PR head synced `main` with docs-only changes: check exact parents, file blobs, merge-base and new CI. When code is byte-identical, preserve old code QA but validate the new SHA.
-- Historical G3 (merge), G4 (automatic frontend ECR publication), G5 (ECS deploy) were distinct. Never treat a technical PASS as action approval.
+- **Work:** read, edit, run local checks and prepare a branch, within the established task/agent authorization.
+- **Publish:** push/PR/merge and **any automatically triggered image or package publication**. Ask once for the combined effect if not covered by standing policy.
+- **Production:** deployment, production flag/secret changes, database migrations, destructive operations, or real cloud expenditure. Explicit Owner authorization, regardless of test results.
 
-**Generalizable lesson:** check the right artifact, not the biggest report. Grok handles routine evidence closure. Reserve ChatGPT for genuinely high-impact design/security decisions, not every docs sync or PR revision.
+**Compatibility with prior Cadensy gates:** G0=read; G1=local implementation; G2=push/PR; G3=merge; G4=artifact publication; G5=production. They remain enforceable for work already restricted. **This update neither retroactively grants G3/G4/G5 nor reopens blocked PRs.** A future Owner decision can deliberately replace the old per-task policy with a precise standing delegation; record that scope once.
 
-## 8. Compact handoff template / 一屏交付
+### Optional standing-delegation template (NOT automatically approved)
 
 ```text
-TASK: <what changed>
-RISK: L0/L1/L2/L3 — one-line reason
-PIN: base=<SHA> head=<SHA>
-DIFF: <paths/critical contract>
-EVIDENCE: STATIC-VERIFIED <...>; EXECUTED <...>; UNKNOWN/NOT RUN <...>
-QA: PASS / CONDITIONAL PASS / NO-GO; exact head
-GATES: authorized <...>; blocked <...>; downstream side effects <...>
-DECISION: Grok autonomous / Human Owner / ChatGPT L3
-NEXT: one concrete step
+Repo: <owner/repo>
+Grok may autonomously: <local changes, push/PR, and/or merge>
+Allowed scope: <safe paths/branches/change classes>
+Required checks: <relevant tests / named CI>
+Downstream effects explicitly covered: <e.g. preview/ECR build only, or none>
+Excluded: <auth, privacy, secrets, DB migration, production changes>
+Stop and ask the Owner when: <...>
+Expires/review date (optional): <...>
 ```
 
-Never fabricate the placeholders. A six-line truthful audit is better than a long invented assurance.
+Do not fill this with imagined approval. A standing grant covers only what the Owner actually chose.
+
+## 4. Team loop / 不必每轮都拉齐所有机器人
+
+**Quick:** DD assigns one worker → worker checks its change → DD closes.  
+**Standard:** DD assigns worker → QA checks affected behavior → DD closes.  
+**Critical:** DD gathers focused evidence → Owner/optional ChatGPT resolves the critical decision → scoped implementation and QA.
+
+Do not summon Frontend, Backend, Cloud, QA, Docs and ChatGPT for a tiny change. Documentation is optional unless it answers a future operational question.
+
+When an issue is found, return **one targeted fix request**. Prefer preserving prior validated results for unchanged areas. After two unsuccessful focused attempts or a genuinely ambiguous safety question, DD escalates; don't produce endless packets.
+
+## 5. Real stop signs / 真正要停的情况
+
+Stop and ask before crossing unauthorized boundaries, exposing credentials or PII, bypassing auth/tenant separation, running destructive migrations, changing a production secret/flag/deployment, ignoring a material failing regression, violating branch protection, or discovering an unreviewed side effect.
+
+Do **not** block a routine PR solely because a browser E2E wasn't run, a docs-only SHA changed, QA couldn't fetch every log, or a cosmetic issue remains—unless that specific proof is essential to the change's safety or an explicitly accepted requirement.
+
+## 6. Cadensy lessons / DESIGN-04 的教训
+
+- Invite Path Trip A vs Header Trip B was a **real critical isolation issue**, worth targeted independent review.
+- The UI later showed Trip B while the POST targeted A: fix the **specific display bug**, not the entire navigation architecture.
+- New tests initially weren't collected by CI: check the actual test entry when adding tests.
+- A docs-only main sync changed SHA but not executable code: revalidate relevant metadata, **reuse prior code QA**, don't ask ChatGPT to repeat the same architectural review.
+- A frontend merge may automatically publish ECR while ECS production deployment remains separate: mention both effects in one approval request.
+
+## 7. Final output / 最终汇报保持四行左右
+
+```text
+Changed: <one-sentence behavior + files or PR>
+Checked: <actual test/CI result, or NOT RUN>
+Risk: Quick / Standard / Critical; any genuine remaining blocker
+Status: <PR/merge/deploy state> | Next: <one action or "done">
+```
+
+Add SHA and deeper evidence links **when a PR, release, or risk actually needs them**. Default to a small honest update, not an audit dossier.
