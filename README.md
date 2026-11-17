@@ -32,7 +32,7 @@ Only use the checks needed for this change. Report real evidence, not a stack of
 
 **Grok:** Load the GitHub Harness and Multi-Agent Skill. Provide repo, goal and any previously approved action scope. DD assigns only needed workers, uses the lowest appropriate review level, and gives a **four-to-five-line status**.
 
-**Resume:** Load the bilingual Resume Skill with the candidate's evidence and requested language/length. Original standalone versions are unchanged. Older links [`RESUME_SIMPLE.md`](RESUME_SIMPLE.md) and [`RESUME_SIMPLEen.md`](RESUME_SIMPLEen.md) remain supported.
+**Resume:** Load the standalone [bilingual Resume Skill](skills/evidence-first-resume/SKILL.md) or [English guide](skills/evidence-first-resume/SKILL.en.md) with the candidate's evidence and requested language/length. The former root-level duplicates were removed; these `skills/evidence-first-resume/` files are the canonical sources.
 
 **Interviews:** Load the S&B Skill; keep fact, inference and hypothetical answers distinct.
 
