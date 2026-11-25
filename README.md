@@ -13,6 +13,7 @@ Reusable skills for a small AI-assisted engineering team, plus evidence-first re
 | **Evidence-First Resume / 结果导向简历** | [`skills/evidence-first-resume/SKILL.md`](skills/evidence-first-resume/SKILL.md) | Bilingual, role-agnostic, evidence-backed resume writing |
 | **Resume — English** | [`skills/evidence-first-resume/SKILL.en.md`](skills/evidence-first-resume/SKILL.en.md) | English guide |
 | **S&B Interview / 情景与行为面试** | [`skills/evidence-first-sb-interview/SKILL.md`](skills/evidence-first-sb-interview/SKILL.md) | Verified behavioral and situational interview preparation |
+| **Algorithm Interview Coach / 算法刷题教练** | [`skills/algorithm-interview-coach/SKILL.md`](skills/algorithm-interview-coach/SKILL.md) | NeetCode/LeetCode: staged explanation, Python basics, comprehension checks, independent coding, hint-first reviews, optional Notion archive |
 
 [Interview English guide](skills/evidence-first-sb-interview/SKILL.en.md) · [Story bank template](skills/evidence-first-sb-interview/STORY_BANK_TEMPLATE.md) · [Interview README](skills/evidence-first-sb-interview/README.md)
 
@@ -35,6 +36,8 @@ Only use the checks needed for this change. Report real evidence, not a stack of
 **Resume:** Load the standalone [bilingual Resume Skill](skills/evidence-first-resume/SKILL.md) or [English guide](skills/evidence-first-resume/SKILL.en.md) with the candidate's evidence and requested language/length. The former root-level duplicates were removed; these `skills/evidence-first-resume/` files are the canonical sources.
 
 **Interviews:** Load the S&B Skill; keep fact, inference and hypothetical answers distinct.
+
+**Algorithm practice:** Load the Algorithm Interview Coach Skill; teach one method at a time and review independent code with hints before showing a full correction.
 
 ## Boundaries
 
