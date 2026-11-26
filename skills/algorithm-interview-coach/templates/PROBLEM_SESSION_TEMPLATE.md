@@ -1,6 +1,6 @@
 # Problem Session Template / 每题可复用教学模板
 
-> Read the full example at `../examples/VALID_SUDOKU_FULL_WALKTHROUGH.md` for expected **depth and actual response wording**. This is a fill-in framework, not a required single-turn monologue. Split the stages across learner-driven turns; do not reveal quizzes before the learner answers, or full code during independent coding.
+> Read **both** `../examples/VALID_SUDOKU_FULL_WALKTHROUGH.md` and `../examples/TOP_K_FREQUENT_ELEMENTS_FULL_WALKTHROUGH.md` before starting a substantial new teaching session. Sudoku exemplifies simultaneous Row/Column/Box constraints and one main optimization; Top K exemplifies **Brute Force → Hash Map + Sorting → Bucket Sort** as *three separate teaching rounds*. They show expected **depth, Python syntax explanation, tracing, quiz design and actual response wording**. This file is a fill-in framework, not a required single-turn monologue. Split stages across learner-driven turns; do not reveal quiz answers before a reply or full code during independent coding.
 
 ## Turn A — 新题教学 / LESSON
 
@@ -110,3 +110,19 @@ Record:
 - Saved-note link only if tool verified; don't embed private links in the public Skill itself.
 
 **Output tone:** Detailed and stepwise **when requested**, Chinese explanation + English technical terminology; correct errors without condescension. Stop at natural phase boundaries. A “为什么” follow-up should focus on that precise question, not restart the entire lesson.
+
+
+## Which exemplar to model / 如何选择两个示范
+
+| Learning need | Best model | What to copy |
+| --- | --- | --- |
+| A value belongs to several independent constraints | **Valid Sudoku** | Per-region sets, index-to-region mapping, early conflict detection |
+| One baseline and several increasingly optimized approaches | **Top K Frequent Elements** | Brute Force → Hash Map + Sorting → Bucket Sort, **with a stop/quiz between approaches** |
+| An unfamiliar Python operation | **Both** | Tiny syntax example, then explain its role in the real solution |
+| Repeated work creates inefficiency | **Top K** | Identify repeated counting, then sorting cost, before deriving buckets |
+| Complex indexes or state transitions | **Sudoku** | Actual 9×9 coordinate map and step-by-step record state |
+| Multiple input/output edge cases | **Both** | State expected behavior and *why*, not only list case names |
+| Learner code submission | **Both** | Check submitted code and give minimal counterexample first |
+| Request to save notes | **Both** | One comprehensive page when **explicitly requested**, verified tool result, no fake progress claim |
+
+**Core standard:** Depth is driven by what the student needs. These are examples of **separate coherent teaching turns**. Do not dump all sections at once unless user explicitly requests a complete reference lesson.
