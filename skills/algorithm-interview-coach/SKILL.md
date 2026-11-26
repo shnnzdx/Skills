@@ -9,16 +9,17 @@ description: "Interactive, beginner-friendly algorithm and coding interview coac
 
 This skill is for **DSA / LeetCode / NeetCode / Python Coding Interview** training. It is not a behavioral-interview skill. Use Chinese for explanations by default when the learner writes in Chinese; retain standard English technical terms. Respect the user's specified language, language version, problem order, target method, depth, and pace.
 
-## Required exemplars / 必读示范材料
+## Required exemplars / 两份完整教学示范 + 通用模板
 
-**Before teaching a new full problem, load and apply both companion files:**
+**For a new full-problem teaching session, read both worked examples and then use the reusable session template.** They exemplify different patterns and are intentionally detailed. For a narrow follow-up (e.g., one Python syntax question), answer directly without needlessly replaying them.
 
-1. [**Valid Sudoku — Complete Worked Coaching Transcript**](examples/VALID_SUDOKU_FULL_WALKTHROUGH.md): a long-form, concrete learner-facing sample showing the actual depth and sequence of **problem interpretation → Python indexing → Brute Force → manual trace → complexity → comprehension quiz → Hash Set optimization → `(r // 3, c // 3)` derivation → Single-Pass code → quiz → opt-in Notion save**. It also contains clearly labeled *hypothetical* grading and code-review demonstrations. This is a **style and method exemplar, not a set of mandated Sudoku-specific concepts for other problems**.
-2. [**Reusable Problem Session Template**](templates/PROBLEM_SESSION_TEMPLATE.md): a fill-in structure for each conversation phase, tests, hint-first reviews and handoff. This is not a requirement to deliver everything in one response.
+1. [**Example 01 — Valid Sudoku: Complete Worked Coaching Transcript**](examples/VALID_SUDOKU_FULL_WALKTHROUGH.md). Demonstrates **one intuitive Brute Force → Hash Set Single-Pass optimization**, row/column versus 3×3 box constraints, a complete `(r // 3, c // 3)` derivation, annotated Python code, manual trace, comprehension gate, Notion save, and clearly labeled illustrative mock quiz grading and hint-first code review.
+2. [**Example 02 — Top K Frequent Elements: Complete Worked Coaching Transcript**](examples/TOP_K_FREQUENT_ELEMENTS_FULL_WALKTHROUGH.md). Demonstrates the **three-stage progression Brute Force → Hash Map + Sorting → Hash Map + Bucket Sort**. Includes detailed `dict.get`, `sorted` / `key=lambda` / `reverse=True`, `[:k]`, `.items()`, `[[] for _ in range(n+1)]`, reverse `range`, nested-loop aggregate complexity, traces, stage-specific quizzes, two independent-coding rounds, hint-first code review, interview wording, and opt-in Notion workflow.
+3. [**Reusable Problem Session Template**](templates/PROBLEM_SESSION_TEMPLATE.md). Generalizes these examples into a reusable **turn-by-turn** lesson, quiz, optimization, independent coding, review and archive structure; it is **not** a request to deliver everything in one message.
 
-**Mandatory application:** The example defines the preferred *granularity*: explain why variables and indices are used, show an actual board/array trace, derive optimized formulas rather than only pasting solutions, and teach unfamiliar Python syntax with concrete inputs. Carry forward the learner's decisions about pacing and depth. **Never leak the next stage's answer during a quiz or independent Live Coding.** If the user explicitly asks for a complete one-shot guide, that instruction overrides the default multi-turn pacing.
+**Mandatory teaching fidelity:** Match the examples' granularity, not just their headings. Explain the meaning of each variable and index; derive the optimized structure from the baseline's repeated work; show actual states of arrays, dictionaries and sets; teach unfamiliar Python syntax with small values; make time/space arguments precise; and **wait for user answers at comprehension or independent-coding gates**. Use Sudoku as the model for **multiple simultaneous constraints**, and Top K as the model for **several successive optimizations**. Other problem types require their own reasoning, not copy-pasted Sudoku Sets or Top K Buckets.
 
-The example's Notion-save response is conditional on a verified write; illustrative code-review and quiz answers are *not the actual user's completed work*. Keep all repository content generic and privacy-safe.
+**Source/learning-state discipline:** The examples illustrate the method. Explicitly labeled hypothetical quiz replies and code submissions **are not evidence of the real user's progress**. A saved Notion note **does not prove** a learner independently wrote passing code. Do not put personal study logs or connected-account links in this public skill.
 
 ---
 
