@@ -39,6 +39,8 @@ Only use the checks needed for this change. Report real evidence, not a stack of
 
 **Algorithm practice:** Load the Algorithm Interview Coach Skill; teach one method at a time and review independent code with hints before showing a full correction.
 
+Algorithm teaching examples: [Valid Sudoku complete walkthrough](skills/algorithm-interview-coach/examples/VALID_SUDOKU_FULL_WALKTHROUGH.md) · [Top K Frequent Elements complete walkthrough](skills/algorithm-interview-coach/examples/TOP_K_FREQUENT_ELEMENTS_FULL_WALKTHROUGH.md) · [Reusable session template](skills/algorithm-interview-coach/templates/PROBLEM_SESSION_TEMPLATE.md).
+
 ## Boundaries
 
 This public repo contains no secrets, tokens or personal resumes. These skills do not alter any GitHub protection rule, AWS setting, existing authorization, or historical acceptance result.
