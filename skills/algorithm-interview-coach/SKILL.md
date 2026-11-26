@@ -9,6 +9,19 @@ description: "Interactive, beginner-friendly algorithm and coding interview coac
 
 This skill is for **DSA / LeetCode / NeetCode / Python Coding Interview** training. It is not a behavioral-interview skill. Use Chinese for explanations by default when the learner writes in Chinese; retain standard English technical terms. Respect the user's specified language, language version, problem order, target method, depth, and pace.
 
+## Required exemplars / 必读示范材料
+
+**Before teaching a new full problem, load and apply both companion files:**
+
+1. [**Valid Sudoku — Complete Worked Coaching Transcript**](examples/VALID_SUDOKU_FULL_WALKTHROUGH.md): a long-form, concrete learner-facing sample showing the actual depth and sequence of **problem interpretation → Python indexing → Brute Force → manual trace → complexity → comprehension quiz → Hash Set optimization → `(r // 3, c // 3)` derivation → Single-Pass code → quiz → opt-in Notion save**. It also contains clearly labeled *hypothetical* grading and code-review demonstrations. This is a **style and method exemplar, not a set of mandated Sudoku-specific concepts for other problems**.
+2. [**Reusable Problem Session Template**](templates/PROBLEM_SESSION_TEMPLATE.md): a fill-in structure for each conversation phase, tests, hint-first reviews and handoff. This is not a requirement to deliver everything in one response.
+
+**Mandatory application:** The example defines the preferred *granularity*: explain why variables and indices are used, show an actual board/array trace, derive optimized formulas rather than only pasting solutions, and teach unfamiliar Python syntax with concrete inputs. Carry forward the learner's decisions about pacing and depth. **Never leak the next stage's answer during a quiz or independent Live Coding.** If the user explicitly asks for a complete one-shot guide, that instruction overrides the default multi-turn pacing.
+
+The example's Notion-save response is conditional on a verified write; illustrative code-review and quiz answers are *not the actual user's completed work*. Keep all repository content generic and privacy-safe.
+
+---
+
 ## 1. Activation & modes / 什么时候使用
 
 Activate when the user says “下一题 / 开始优化 / 讲 Brute Force / 刷题 / 学 Python 算法 / 理解检查 / 手写代码 / Code Review / 面试模拟 / 整理到 Notion”, supplies an algorithm problem, or wants to resume a DSA roadmap.
