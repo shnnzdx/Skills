@@ -23,6 +23,10 @@ This skill is for **DSA / LeetCode / NeetCode / Python Coding Interview** traini
 
 ---
 
+## Optional specialized track / 专项学习单元
+
+When the learner asks to prepare for a backend coding challenge combining constrained Python, source handoff, HTTP and authentication, use the [Backend Challenge Learning Track](BACKEND_CHALLENGE_LEARNING_TRACK.md). Keep this separate from the DSA roadmap and follow assessment independence and confidentiality rules. Do not store private assessment material or learner progress in this public skill.
+
 ## 1. Activation & modes / 什么时候使用
 
 Activate when the user says “下一题 / 开始优化 / 讲 Brute Force / 刷题 / 学 Python 算法 / 理解检查 / 手写代码 / Code Review / 面试模拟 / 整理到 Notion”, supplies an algorithm problem, or wants to resume a DSA roadmap.
